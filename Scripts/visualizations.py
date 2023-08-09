@@ -72,7 +72,8 @@ def PSD(sound,logf=True,logPb=True):
     
     if logPb==True:
         logP = 10*np.log10(np.abs(P)/np.max(np.max(np.abs(P))))
-        logP_cumtrapz = integrate.cumtrapz(logP-logP.min(), f, initial=0) #calculate cumultative integral (of PSD)
+        print(np.min(logP[1:-1]))
+        logP_cumtrapz = integrate.cumtrapz(logP-np.min(logP[1:-1]), f, initial=0) #calculate cumultative integral (of PSD)
         logP_cumtrapz = logP_cumtrapz/np.max(logP_cumtrapz)
         
     #Plotting
@@ -114,7 +115,8 @@ def PSD(sound,logf=True,logPb=True):
     #Legend
     lns = lns1+lns2+lns3
     labs = [l.get_label() for l in lns]
-    ax2.legend(lns, labs, loc=1,facecolor='white', framealpha = 1,prop={'size': 6})
+    ax2.legend(lns, labs, facecolor='white', framealpha = 1,
+                  bbox_to_anchor=(1.2, 1), loc='upper left', borderaxespad=0.)
 #############################################################################################
 #Comparison Plots for 1/2 Sounds, includes spectogram, oscillogram, & PSD
 def pulse1(POI_,sampling_rate, m_channel_=False):
@@ -220,7 +222,7 @@ def compplot(sound1,sampling_rate1,
 
         if logPb==True:
             logP = 10*np.log10(np.abs(P)/np.max(np.max(np.abs(P))))
-            logP_cumtrapz = integrate.cumtrapz(logP-logP.min(), f, initial=0) #calculate cumultative integral (of PSD)
+            logP_cumtrapz = integrate.cumtrapz(logP-np.min(logP[1:-1]), f, initial=0) #calculate cumultative integral (of PSD)
             logP_cumtrapz = logP_cumtrapz/np.max(logP_cumtrapz)
 
         #Plotting
@@ -261,7 +263,8 @@ def compplot(sound1,sampling_rate1,
         #Legend
         lns = lns1+lns2+lns3
         labs = [l.get_label() for l in lns]
-        ax4.legend(lns, labs, loc=1,facecolor='white', framealpha = 1,prop={'size': 6})
+        ax4.legend(lns, labs, facecolor='white', framealpha = 1,
+                   loc='upper left', borderaxespad=0.)
 
         sound=sound2
         fs = sampling_rate2
@@ -273,7 +276,7 @@ def compplot(sound1,sampling_rate1,
 
         if logPb==True:
             logP = 10*np.log10(np.abs(P)/np.max(np.max(np.abs(P))))
-            logP_cumtrapz = integrate.cumtrapz(logP-logP.min(), f, initial=0) #calculate cumultative integral (of PSD)
+            logP_cumtrapz = integrate.cumtrapz(logP-np.min(logP[1:-1]), f, initial=0) #calculate cumultative integral (of PSD)
             logP_cumtrapz = logP_cumtrapz/np.max(logP_cumtrapz)
 
         #Plotting
@@ -314,7 +317,8 @@ def compplot(sound1,sampling_rate1,
         #Legend
         lns = lns1+lns2+lns3
         labs = [l.get_label() for l in lns]
-        ax5.legend(lns, labs, loc=1,facecolor='white', framealpha = 1,prop={'size': 6})
+        ax5.legend(lns, labs, facecolor='white', framealpha = 1,
+                   loc='upper left', borderaxespad=0.)
         
         
         all_axes = fig.get_axes()
