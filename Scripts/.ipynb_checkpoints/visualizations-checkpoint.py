@@ -421,18 +421,18 @@ def singplot(sound1,sampling_rate1,
         ax4.set_xlabel('Relative Cum.Int.of PSD (%)', color='r')
 
         #Legend
-        lns = lns1+lns2+lns3
-        labs = [l.get_label() for l in lns]
-        ax4.legend(lns, labs, facecolor='white', framealpha = 1,
-                   loc='upper left', borderaxespad=0.)
+        #lns = lns1+lns2+lns3
+        #labs = [l.get_label() for l in lns]
+        #ax4.legend(lns, labs, facecolor='white', framealpha = 1,
+        #           loc='upper left', borderaxespad=0.)
         
         
-        all_axes = fig.get_axes()
-        for axis in all_axes:
-            legend = axis.get_legend()
-            if legend is not None:
-                legend.remove()
-                all_axes[-1].add_artist(legend)
+        #all_axes = fig.get_axes()
+        #for axis in all_axes:
+        #    legend = axis.get_legend()
+        #    if legend is not None:
+        #        legend.remove()
+        #        all_axes[-1].add_artist(legend)
         #if sound2 == 0:
          #   axs[0,1].remove()
          #   axs[1,1].remove()
